@@ -48,16 +48,15 @@ print(print_gboard(game_board))
 #RECALL: input() ALWAYS RETURNS A STRING; hence convert to integer in this case!
 #Try & Except - for error and exception handling, so the program doesn't crash.
 
+try:
+    select_square = int(input("Enter the number of an available square: "))
+    if select_square < 1 or select_square > 9:
+        print("Invalid entry. Please select a square between 1 and 9.")
+    else:
+        print(select_square)
 
-    try:
-       select_square = int(input("Enter the number of an available square: "))
-       if select_square < 1 or select_square > 9:
-           print("Invalid entry. Please select a square between 1 and 9.")
-       else:
-           print(select_square)
-
-    except ValueError:
-           print("Value error - not a valid number. Please try again.")
+except ValueError:
+    print("Value error - not a valid number. Please try again.")
 
 
 
