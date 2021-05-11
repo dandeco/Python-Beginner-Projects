@@ -41,22 +41,49 @@ def print_gboard(game_board):
 # this is set up like this because there are 3 spaces in EACH of the 3 rows of the list!
 
 
-game_board = [["_" for _ in range(3)] for _ in range(3)]
-print(print_gboard(game_board))
+#      game_board = [["_" for _ in range(3)] for _ in range(3)]
+#      print(print_gboard(game_board))
 
 
 #RECALL: input() ALWAYS RETURNS A STRING; hence convert to integer in this case!
 #Try & Except - for error and exception handling, so the program doesn't crash.
 
-try:
+#    try:
+#        select_square = int(input("Enter the number of an available square: "))
+#       if select_square < 1 or select_square > 9:
+#           print("Invalid entry. Please select a square between 1 and 9.")
+#       else:
+#           print(select_square)
+
+#     except ValueError:
+#           print("Value error - not a valid number. Please try again.")
+
+#NB: Keep in mind the term REFACTORING. We can make this code simplier to read
+#    and less complicated to refer to.
+# Hence, we can use the raise statement. Also changed the comparison operator into 'chained comparisons'.
+# Think of it this way: 'If not 1 is less than/equal to select_square
+#                               select_square is less than/ equal to 9'
+
+# REMEMBER: reading from the value of the very left operand!!!
+# Calling for user input multiple times, so put it in a function called select_position.
+# NB: FUNCTION should only be carrying out ONE THING! Thus, try and except stay outside of the function, in case of an
+# error occuring & producing 'NONE' or something else.
+
+def select_position():
     select_square = int(input("Enter the number of an available square: "))
-    if select_square < 1 or select_square > 9:
-        print("Invalid entry. Please select a square between 1 and 9.")
-    else:
-        print(select_square)
+    if not 1 <= select_square <= 9:
+        raise ValueError
+    return select_square
+
+game_board = [["_" for _ in range(3)] for _ in range(3)]
+print(print_gboard(game_board))
+
+try:
+    select_square = select_position()
+    print(select_square)
 
 except ValueError:
-    print("Value error - not a valid number. Please try again.")
+    print("Invalid entry. Please select a square between 1 and 9.")
 
 
 
