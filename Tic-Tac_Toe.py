@@ -32,7 +32,7 @@ def print_gboard(game_board):
     for line in game_board:
         print(line)
 
-print_gboard(game_board)
+#print_gboard(game_board)
 
 #Making our game board become all blank spaces. Utilizing LIST COMPREHENSION HERE!
 # This _ is a throwaway or blank value, in which you don't have to specify the parameter.
@@ -40,6 +40,31 @@ print_gboard(game_board)
 # [["blank" for "blank" in range(3)] for "blank" in range(3)] - From what I understand,
 # this is set up like this because there are 3 spaces in EACH of the 3 rows of the list!
 
+
 game_board = [["_" for _ in range(3)] for _ in range(3)]
+print(print_gboard(game_board))
+
+
+#RECALL: input() ALWAYS RETURNS A STRING; hence convert to integer in this case!
+#Try & Except - for error and exception handling, so the program doesn't crash.
+
+
+    try:
+       select_square = int(input("Enter the number of an available square: "))
+       if select_square < 1 or select_square > 9:
+           print("Invalid entry. Please select a square between 1 and 9.")
+       else:
+           print(select_square)
+
+    except ValueError:
+           print("Value error - not a valid number. Please try again.")
+
+
+
+
+
+
+
+
 
 
